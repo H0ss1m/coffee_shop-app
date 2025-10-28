@@ -107,7 +107,7 @@ class Details extends StatelessWidget {
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height * 0.18,
+                            height: MediaQuery.of(context).size.height * 0.2,
                             padding: const EdgeInsets.all(12.0),
                             decoration: BoxDecoration(
                               // ignore: deprecated_member_use
@@ -289,7 +289,7 @@ class Details extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
                 children: [
                   Column(

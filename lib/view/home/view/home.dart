@@ -4,7 +4,7 @@ import 'package:coffee_shop/module/home_page.dart';
 import 'package:coffee_shop/module/user_page.dart';
 import 'package:coffee_shop/view/home/widget/custom_navigationbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,26 +14,40 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int currentIndex = 0;
+  PageController pageController = PageController();
+
+  List pages = [HomePage(), FavoritePage(), CartPage(), UserPage()];
+
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CuNavController>(
-      init: CuNavController(),
-      builder: (controller) {
-        return Scaffold(
-          // AppBar with title
-          bottomNavigationBar: controller.customNavigationBar(),
+    return Scaffold(
+      // AppBar with title
+      bottomNavigationBar: customNavigationBar(
+        currentIndex: currentIndex,
+        onPressed: (index) {
+          setState(() {
+            currentIndex = index;
+            pageController.jumpToPage(index);
+          });
+        },
+      ),
 
-          // Using PageView to switch between pages
-          body: PageView(
-            controller: controller.pageController,
-            onPageChanged: (index) {
-              controller.updateIndex(index);
-            },
-            // physics: const NeverScrollableScrollPhysics(),
-            children: [HomePage(), FavoritePage(), CartPage(), UserPage()],
-          ),
-        );
-      },
+      // Using PageView to switch between pages
+      body: PageView(
+        controller: pageController,
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+            pageController.animateToPage(
+              currentIndex,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          });
+        },
+        children: [HomePage(), FavoritePage(), CartPage(), UserPage()],
+      ),
     );
   }
 }

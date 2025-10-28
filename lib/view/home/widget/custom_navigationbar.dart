@@ -1,23 +1,13 @@
 import 'package:coffee_shop/model/color_balet.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
-class CuNavController extends GetxController {
   int currentIndex = 0;
   PageController pageController = PageController();
 
-  void updateIndex(int value) {
-    currentIndex = value;
-    pageController.animateToPage(
-      value,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-    update(); // Notify listeners
-  }
-
-  StylishBottomBar customNavigationBar() {
+StylishBottomBar customNavigationBar(
+    {required int currentIndex, required Function(int) onPressed}
+) {
     return StylishBottomBar(
       option: DotBarOptions(
         dotStyle: DotStyle.tile,
@@ -85,11 +75,13 @@ class CuNavController extends GetxController {
       ],
       // hasNotch: true,
       currentIndex: currentIndex,
-      onTap: (value) {
-        updateIndex(value);
-        // currentIndex = value;
-        print(value);
-      },
+      onTap: onPressed,
+      // (value) {
+      //   // updateIndex(value);
+      //   // currentIndex = value;
+      //   // update();
+
+      //   print(value);
+      // },
     );
   }
-}

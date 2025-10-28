@@ -15,31 +15,34 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // This widget is the root of your application.
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        // Get.offNamed('/start');
+        print('User is currently signed out!');
+      } else {
+        Get.offNamed('/home');
+        print('User is signed in!');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // Use a StreamBuilder to handle auth state and navigate accordingly.
-      // This is more robust than using a listener in initState.
-      home: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            // Show a loading indicator while checking auth state
-            return const Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            );
-          }
-          if (snapshot.hasData) {
-            // User is signed in
-            return const Home();
-          }
-          // User is signed out
-          return const StartPage();
-        },
-      ),
+      initialRoute: '/home',
+      home: Home(),
       theme: ThemeData(primaryColor: Color(0xffC67C4E)),
       debugShowCheckedModeBanner: false,
       getPages: [
