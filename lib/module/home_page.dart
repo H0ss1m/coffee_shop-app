@@ -1,13 +1,12 @@
+import 'package:coffee_shop/model/color_balet.dart';
+import 'package:coffee_shop/utils/all_data.dart';
+import 'package:coffee_shop/view/home/widget/body.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  String location = 'New York, USA';
-  String imageUrl =
-      'https://images.pexels.com/photos/851555/pexels-photo-851555.jpeg';
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,47 +34,68 @@ class HomePage extends StatelessWidget {
                 // Row for location and notification icon
                 Row(
                   children: [
+                    // Column(
+                    //   // Column for location dropdown
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     const Text(
+                    //       'Location',
+                    //       style: TextStyle(
+                    //         color: Colors.grey,
+                    //         fontWeight: FontWeight.w400,
+                    //         fontSize: 12,
+                    //       ),
+                    //     ),
+
+                    //     // Dropdown for selecting location
+                    //     DropdownButton(
+                    //       hint: Text(
+                    //         'Select Location',
+                    //         style: TextStyle(
+                    //           color: Colors.white,
+                    //           fontWeight: FontWeight.w400,
+                    //           fontSize: 16,
+                    //         ),
+                    //       ),
+                    //       icon: Icon(
+                    //         Icons.keyboard_arrow_down_rounded,
+                    //         color: Colors.white,
+                    //       ),
+                    //       underline: null,
+                    //       items: [
+                    //         DropdownMenuItem(
+                    //           value: 'New York, USA',
+                    //           child: Text('New York, USA'),
+                    //         ),
+                    //         DropdownMenuItem(
+                    //           value: 'Los Angeles, USA',
+                    //           child: Text('Los Angeles, USA'),
+                    //         ),
+                    //       ],
+                    //       onChanged: (value) {
+                    //         location = value.toString();
+                    //       },
+                    //     ),
+                    //   ],
+                    // ),
                     Column(
-                      // Column for location dropdown
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Location',
+                        Text(
+                          'Welcome,',
                           style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
                             color: Colors.grey,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
                           ),
                         ),
-
-                        // Dropdown for selecting location
-                        DropdownButton(
-                          hint: Text(
-                            'Select Location',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
+                        Text(
+                          userName,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
-                          underline: null,
-                          items: [
-                            DropdownMenuItem(
-                              value: 'New York, USA',
-                              child: Text('New York, USA'),
-                            ),
-                            DropdownMenuItem(
-                              value: 'Los Angeles, USA',
-                              child: Text('Los Angeles, USA'),
-                            ),
-                          ],
-                          onChanged: (value) {
-                            location = value.toString();
-                          },
                         ),
                       ],
                     ),
@@ -176,7 +196,7 @@ class HomePage extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.green,
+                color: mainColor,
               ),
               child: Image.network(
                 imageUrl,
@@ -188,17 +208,7 @@ class HomePage extends StatelessWidget {
         ),
 
         // This is a placeholder for the body widget
-        Expanded(
-          child: Container(
-            color: Colors.red,
-            child: Center(
-              child: Text(
-                'Body',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-          ),
-        ),
+        body(),
       ],
     );
   }

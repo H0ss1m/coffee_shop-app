@@ -4,7 +4,6 @@ import 'package:coffee_shop/module/home_page.dart';
 import 'package:coffee_shop/module/user_page.dart';
 import 'package:coffee_shop/view/home/widget/custom_navigationbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,14 +35,10 @@ class _HomeState extends State<Home> {
       // Using PageView to switch between pages
       body: PageView(
         controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
         onPageChanged: (index) {
           setState(() {
             currentIndex = index;
-            pageController.animateToPage(
-              currentIndex,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeInOut,
-            );
           });
         },
         children: [HomePage(), FavoritePage(), CartPage(), UserPage()],
