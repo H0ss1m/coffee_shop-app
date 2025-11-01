@@ -23,7 +23,7 @@ List coffeeTypes = [
     'price': '4.20',
   },
   {
-    'image': 'https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg',
+    'image': 'https://images.pexels.com/photos/9430780/pexels-photo-9430780.jpeg',
     'title': 'Latte',
     'subTitle': 'With Almond Milk',
     'type': 'Iced',

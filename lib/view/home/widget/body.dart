@@ -17,82 +17,92 @@ Widget body() {
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
+              childAspectRatio: 0.75,
             ),
             itemCount: 4,
             itemBuilder: (context, index) {
-              return Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            // image: DecorationImage(
-                            //   fit: BoxFit.contain,
-                            //   image: NetworkImage(coffeeTypes[index]['image']),
-                            // ),
-                          ),
-                          child: Image.network(
-                            height: 200,
-                            width: 140,
-                            coffeeTypes[index]['image'],
-                            fit: BoxFit.fill,
-                          ),
+              return Container(
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: 10,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          // image: DecorationImage(
+                          //   fit: BoxFit.contain,
+                          //   image: NetworkImage(coffeeTypes[index]['image']),
+                          // ),
+                        ),
+                        child: Image.network(
+                          // height: 200,
+                          width: double.infinity,
+                          coffeeTypes[index]['image'],
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              coffeeTypes[index]['title'],
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.black.withOpacity(0.8),
-                              ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            coffeeTypes[index]['title'],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.black.withOpacity(0.8),
                             ),
-                            Text(
-                              coffeeTypes[index]['subTitle'],
-                              style: TextStyle(
-                                color: Colors.black.withOpacity(0.6),
-                              ),
+                          ),
+                          Text(
+                            coffeeTypes[index]['subTitle'],
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(0.6),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '\$${coffeeTypes[index]['price']}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Colors.black.withOpacity(0.8),
-                                  ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '\$${coffeeTypes[index]['price']}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.black.withOpacity(0.8),
                                 ),
-                                Icon(Icons.add_circle_outline),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Container(
+                                  padding: EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffC67C4E),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Icon(Icons.add, color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             },
