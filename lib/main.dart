@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         GetPage(name: '/login', page: () => const Login()),
         GetPage(name: '/signup', page: () => const SignUp()),
         GetPage(name: '/home', page: () => const Home()),
-        GetPage(name: '/details', page: () => Details()),
+        GetPage(name: '/details', page: () => Details(coffeeData: [], index: 0,)),
       ],
     );
   }

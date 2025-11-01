@@ -8,16 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Details extends StatelessWidget {
-  Details({super.key});
+  Details({super.key, required this.coffeeData, required this.index});
 
-  String name = 'Cappuccino'; // Change it to dynamic value.
-  String extra = 'With Steamed Milk'; // Change it to dynamic value.
-  String description =
-      'Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun Cappuccino is a holly day main of the controller and we will play with it we play for fun and profit for fun'; // Change it to dynamic value.
-  String roast = 'Medium Roasted'; // Change it to dynamic value.
+  final List coffeeData;
+  final int index;
+
   double rate = 4.5; // Change it to dynamic value.
-  double price = 4.20; // Change it to dynamic value.
-  String size = 'S'; // Change it to dynamic value.
   bool small = true;
   bool medium = false;
   bool large = false;
@@ -37,15 +33,14 @@ class Details extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      alignment: Alignment.center,
+                      height: MediaQuery.of(context).size.height * 0.6,                      alignment: Alignment.center,
                       child: Stack(
                         alignment: Alignment.bottomLeft,
                         children: [
                           SizedBox(
                             width: MediaQuery.of(context).size.width,
-                            child: Image.asset(
-                              'assets/images/cp2.jpg',
+                            child: Image.network(
+                              coffeeData[index]['image'],
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -60,6 +55,7 @@ class Details extends StatelessWidget {
                                     horizontal: 10,
                                     vertical: 5,
                                   ),
+                                  margin: EdgeInsets.only(top: 20),
                                   height:
                                       MediaQuery.of(context).size.height * 0.1,
                                   width: MediaQuery.of(context).size.width,
@@ -127,7 +123,7 @@ class Details extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          name,
+                                          coffeeData[index]['title'],
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 20,
@@ -135,7 +131,7 @@ class Details extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          extra,
+                                          coffeeData[index]['subTitle'],
                                           style: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
@@ -198,7 +194,7 @@ class Details extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Text(
-                                        roast,
+                                        coffeeData[index]['roast'],
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 15,
@@ -230,7 +226,7 @@ class Details extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            description,
+                            coffeeData[index]['description'],
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 16,
@@ -291,6 +287,7 @@ class Details extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -317,7 +314,7 @@ class Details extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '$price',
+                            coffeeData[index]['price'],
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -327,8 +324,6 @@ class Details extends StatelessWidget {
                       ),
                     ],
                   ),
-
-                  const Spacer(),
 
                   // Buy Button
                   MaterialButton(

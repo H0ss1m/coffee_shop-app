@@ -169,7 +169,7 @@ class HomePage extends StatelessWidget {
                         child: TextFormField(
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintText: 'Search coffee',
+                            hintText: 'Find your coffee...',
                             hintStyle: TextStyle(color: Colors.grey),
                             border: InputBorder.none,
                           ),
