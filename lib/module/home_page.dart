@@ -208,7 +208,7 @@ class HomePage extends StatelessWidget {
         ),
 
         // This is a placeholder for the body widget
-        body(),
+        Expanded(child: body()),
       ],
     );
   }

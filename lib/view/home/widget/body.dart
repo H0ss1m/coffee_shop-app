@@ -8,13 +8,16 @@ Widget body() {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
-          SizedBox(height: 50, child: filterBar()),
+          filterBar(),
           GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),
+            itemCount: 4,
             itemBuilder: (context, index) {
               return Container();
             },
