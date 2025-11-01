@@ -15,7 +15,7 @@ List filterTypes = [
 
 List coffeeTypes = [
   {
-    'image': 'https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg',
+    'image': 'https://images.pexels.com/photos/34519661/pexels-photo-34519661.jpeg',
     'title': 'Cappuccino',
     'subTitle': 'With Oat Milk',
     'type': 'Hot',
