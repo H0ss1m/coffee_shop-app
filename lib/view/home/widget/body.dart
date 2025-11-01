@@ -17,7 +17,7 @@ Widget body() {
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
-              childAspectRatio: 0.75,
+              childAspectRatio: 0.67,
             ),
             itemCount: 4,
             itemBuilder: (context, index) {
@@ -39,68 +39,64 @@ Widget body() {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 10,
                   children: [
-                    Expanded(
-                      child: Container(
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          // image: DecorationImage(
-                          //   fit: BoxFit.contain,
-                          //   image: NetworkImage(coffeeTypes[index]['image']),
-                          // ),
-                        ),
-                        child: Image.network(
-                          // height: 200,
-                          width: double.infinity,
-                          coffeeTypes[index]['image'],
-                          fit: BoxFit.cover,
-                        ),
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        // image: DecorationImage(
+                        //   fit: BoxFit.contain,
+                        //   image: NetworkImage(coffeeTypes[index]['image']),
+                        // ),
+                      ),
+                      child: Image.network(
+                        height: 130,
+                        width: double.infinity,
+                        coffeeTypes[index]['image'],
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            coffeeTypes[index]['title'],
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black.withOpacity(0.8),
-                            ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          coffeeTypes[index]['title'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                          Text(
-                            coffeeTypes[index]['subTitle'],
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.6),
-                            ),
+                        ),
+                        Text(
+                          coffeeTypes[index]['subTitle'],
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(0.6),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '\$${coffeeTypes[index]['price']}',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.black.withOpacity(0.8),
-                                ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '\$${coffeeTypes[index]['price']}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.black.withOpacity(0.8),
                               ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Container(
-                                  padding: EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffC67C4E),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Icon(Icons.add, color: Colors.white),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Container(
+                                padding: EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color: Color(0xffC67C4E),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
+                                child: Icon(Icons.add, color: Colors.white),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
