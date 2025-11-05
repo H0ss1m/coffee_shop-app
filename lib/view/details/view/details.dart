@@ -33,7 +33,8 @@ class Details extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.6,                      alignment: Alignment.center,
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      alignment: Alignment.center,
                       child: Stack(
                         alignment: Alignment.bottomLeft,
                         children: [
