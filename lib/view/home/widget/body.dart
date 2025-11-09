@@ -27,7 +27,7 @@ Widget body() {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  Get.to(() => Details(coffeeData: coffeeTypes, index: index,));
+                  Get.to(() => Details(coffeeData: coffeeTypes, index: index));
                 },
                 child: Container(
                   padding: const EdgeInsets.all(10.0),
@@ -92,7 +92,14 @@ Widget body() {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(
+                                    () => Details(
+                                      coffeeData: coffeeTypes,
+                                      index: index,
+                                    ),
+                                  );
+                                },
                                 icon: Container(
                                   padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
